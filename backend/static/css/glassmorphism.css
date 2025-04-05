@@ -1,0 +1,253 @@
+/**
+ * Updated Glassmorphism styling for dDOS.Ai Dashboard
+ * Theme: Futuristic Cyberpunk Glow
+ */
+
+ .glass-card {
+    background: rgba(24, 24, 36, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    box-shadow: 0 12px 48px 0 rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  .glass-inner {
+    padding: 24px;
+    height: 100%;
+  }
+  
+  /* Cosmic button styles */
+  .cosmic-btn {
+    background: linear-gradient(
+      90deg,
+      #00c6ff,
+      #0072ff
+    ) !important;
+    border: none !important;
+    color: white !important;
+    position: relative;
+    overflow: hidden;
+    height: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 20px rgba(0, 198, 255, 0.35);
+    border-radius: 8px;
+    font-weight: 600;
+  }
+  
+  .cosmic-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 198, 255, 0.5);
+  }
+  
+  .cosmic-btn:active {
+    transform: translateY(1px);
+  }
+  
+  .cosmic-btn .btn-text {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .cosmic-btn .btn-glitch {
+    position: absolute;
+    top: 0;
+    left: -10%;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-20deg);
+    transition: all 0.4s ease;
+    z-index: 1;
+  }
+  
+  .cosmic-btn:hover .btn-glitch {
+    width: 120%;
+    left: -10%;
+    transition: all 0.6s ease;
+  }
+  
+  /* Dashboard container */
+  .dashboard-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: white;
+    padding-bottom: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Stats */
+  .stat-card {
+    height: 100%;
+  }
+  
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00c6ff, #3dccc7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .stat-icon {
+    font-size: 2rem;
+    color: #00c6ff;
+  }
+  
+  .stat-icon.danger {
+    color: #ef4444;
+  }
+  
+  .stat-icon.success {
+    color: #10b981;
+  }
+  
+  /* Titles */
+  .card-title {
+    color: #00c6ff;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 0 0 12px rgba(0, 198, 255, 0.6);
+  }
+  
+  /* Firewall Table */
+  .firewall-table-container {
+    height: 300px;
+    overflow-y: auto;
+  }
+  
+  .firewall-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .firewall-table th {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .firewall-table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  
+  .firewall-table tr {
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .firewall-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Entry animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .new-entry {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  /* Threat levels */
+  .threat-critical {
+    color: #f43f5e;
+    font-weight: bold;
+  }
+  
+  .threat-high {
+    color: #fb923c;
+    font-weight: bold;
+  }
+  
+  .threat-medium {
+    color: #fbbf24;
+  }
+  
+  .threat-low {
+    color: #34d399;
+  }
+  
+  /* Action tags */
+  .action-blocked {
+    color: #f43f5e;
+    font-weight: bold;
+  }
+  
+  .action-allowed {
+    color: #34d399;
+  }
+  
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 198, 255, 0.5);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 198, 255, 0.8);
+  }
+  
+  /* Email alert input group */
+  .cyber-input-group {
+    position: relative;
+    width: 100%;
+  }
+  
+  .cyber-input-group .input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00c6ff;
+    z-index: 10;
+  }
+  
+  .cyber-input {
+    height: 50px;
+    padding-left: 45px !important;
+    background: rgba(15, 23, 42, 0.5) !important;
+    border: 1px solid rgba(0, 198, 255, 0.2) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .cyber-input:focus {
+    border-color: rgba(0, 198, 255, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.2) !important;
+    background: rgba(15, 23, 42, 0.7) !important;
+  }
+  
+  .cyber-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  

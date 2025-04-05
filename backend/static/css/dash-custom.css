@@ -1,0 +1,229 @@
+/* Dashboard Custom Styling */
+
+/* General Styles for Dashboard */
+.dash-app-container {
+    background-color: #0b0f1a; /* darker, sleek background */
+    font-family: "Inter", sans-serif;
+    color: #e0e0e0;
+  }
+  
+  /* Stat cards */
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00d4ff, #8a2be2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .stat-icon {
+    font-size: 2.5rem;
+    opacity: 0.9;
+    color: #00d4ff;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  .stat-icon:hover {
+    transform: scale(1.1);
+  }
+  
+  .stat-icon.danger {
+    color: #ff4e70;
+  }
+  
+  .stat-icon.success {
+    color: #00ffa1;
+  }
+  
+  /* Log entry styling */
+  .log-entry {
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .new-entry {
+    animation: highlight 2s ease-out;
+  }
+  
+  @keyframes highlight {
+    0% {
+      background-color: rgba(0, 212, 255, 0.2);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  
+  /* Threat level colors */
+  .text-danger {
+    color: #ff4e70 !important;
+  }
+  
+  .text-warning {
+    color: #ffc75f !important;
+  }
+  
+  .text-info {
+    color: #00d4ff !important;
+  }
+  
+  .text-success {
+    color: #00ffa1 !important;
+  }
+  
+  /* Action colors */
+  .action-blocked {
+    color: #ff4e70 !important;
+    font-weight: bold;
+  }
+  
+  .action-allowed {
+    color: #00ffa1 !important;
+  }
+  
+  /* Threat level styling in table */
+  .threat-critical {
+    color: #ff4e70 !important;
+    font-weight: bold;
+    background-color: rgba(255, 78, 112, 0.1);
+  }
+  
+  .threat-high {
+    color: #ffc75f !important;
+    font-weight: bold;
+    background-color: rgba(255, 199, 95, 0.1);
+  }
+  
+  .threat-medium {
+    color: #ffe066 !important;
+    background-color: rgba(255, 224, 102, 0.1);
+  }
+  
+  .threat-low {
+    color: #00ffa1 !important;
+    background-color: rgba(0, 255, 161, 0.05);
+  }
+  
+  /* Firewall table styling */
+  .firewall-table {
+    width: 100%;
+    color: #f5f5f5;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  
+  .firewall-table th {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #00d4ff;
+    letter-spacing: 0.5px;
+  }
+  
+  .firewall-table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .firewall-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+  
+  .firewall-table-container {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  /* Pulse animation for critical alerts */
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Chart-specific styling */
+  .chart-tooltip {
+    background: rgba(10, 14, 22, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+    color: white;
+  }
+  
+  /* Network chart node styling */
+  .network-node {
+    stroke-width: 2px;
+    stroke: white;
+  }
+  
+  .network-node.service {
+    fill: #00d4ff;
+  }
+  
+  .network-node.client {
+    fill: #00ffa1;
+  }
+  
+  .network-node.attacker {
+    fill: #ff4e70;
+  }
+  
+  .network-edge {
+    stroke-width: 1.5px;
+  }
+  
+  .network-edge.attack {
+    stroke: #ff4e70;
+    stroke-dasharray: 5, 5;
+  }
+  
+  .network-edge.normal {
+    stroke: #00ffa1;
+  }
+  
+  /* Geographic map styling */
+  .geo-country {
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 0.5px;
+  }
+  
+  /* Glassmorphism Card Effect */
+  .glass-chart-card {
+    background: rgba(20, 25, 38, 0.85);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 255, 255, 0.1);
+    padding: 20px;
+    margin: 10px 0;
+    color: white;
+  }
+  
+  /* Chart hover effects */
+  .plotly:hover {
+    filter: brightness(1.2);
+    transition: filter 0.3s ease;
+  }
+  

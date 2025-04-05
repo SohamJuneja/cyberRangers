@@ -1,0 +1,309 @@
+/* Base styles for glassmorphism UI - compatible with styles.css */
+
+:root {
+    /* Colors already defined in styles.css */
+    --loader-primary: #8a2be2;  /* Changed from #7c3aed */
+    --loader-secondary: #20b2aa;  /* Changed from #36d7b7 */
+  }
+  
+  /* Body Styles - keeping class names identical */
+  body {
+    background: linear-gradient(150deg, var(--bg-dark), var(--bg-darker));  /* Changed angle */
+    color: var(--text-light);
+    font-family: "Segoe UI", "Roboto", sans-serif;
+    min-height: 100vh;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  body.loading {
+    overflow: hidden;
+  }
+  
+  /* Canvas Background - kept selector identical */
+  #network-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  /* Loading Screen Styles - kept class names identical */
+  .loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-darker);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s, visibility 0.5s;
+  }
+  
+  .cyber-loader {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .cyber-loader::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px solid transparent;  /* Changed from 4px */
+    border-top-color: var(--loader-primary);
+    border-right-color: var(--loader-primary);
+    border-radius: 50%;
+    animation: cyberspin 2s linear infinite;
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.6);  /* Changed shadow */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .cyber-loader::after {
+    content: "";
+    position: absolute;
+    top: 18px;  /* Changed from 15px */
+    left: 18px;  /* Changed from 15px */
+    right: 18px;  /* Changed from 15px */
+    bottom: 18px;  /* Changed from 15px */
+    border: 5px solid transparent;  /* Changed from 4px */
+    border-top-color: var(--loader-secondary);
+    border-left-color: var(--loader-secondary);
+    border-radius: 50%;
+    animation: cyberspin 1.5s linear infinite reverse;
+    box-shadow: 0 0 20px rgba(32, 178, 170, 0.6);  /* Changed shadow */
+  }
+  
+  .loader-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .loader-icon {
+    font-size: 3.2rem;  /* Changed from 3rem */
+    color: var(--accent-color);
+    animation: pulse 1.5s infinite;
+    text-shadow: 0 0 18px rgba(138, 43, 226, 0.9);  /* Changed shadow */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .loader-text {
+    margin-top: 22px;  /* Changed from 20px */
+    color: #fff;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;  /* Changed from 2px */
+    animation: glow 1.5s ease-in-out infinite alternate;
+    transition: opacity 0.5s;
+  }
+  
+  .cyber-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .particle {
+    position: absolute;
+    width: 3px;  /* Changed from 2px */
+    height: 3px;  /* Changed from 2px */
+    background: var(--accent-color);
+    border-radius: 50%;
+    animation: particleFloat 3s infinite;
+    box-shadow: 0 0 8px var(--accent-color);  /* Changed from 6px */
+  }
+  
+  /* Glassmorphism Navbar - kept class name identical */
+  .glass-navbar {
+    background: rgba(20, 30, 50, 0.75) !important;  /* Changed color value */  
+    backdrop-filter: blur(12px);  /* Changed from 10px */
+    -webkit-backdrop-filter: blur(12px);  /* Changed from 10px */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);  /* Changed opacity */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);  /* Changed shadow */
+  }
+  
+  .glass-navbar .navbar-brand {
+    font-weight: bold;
+    letter-spacing: 1.2px;  /* Changed from 1px */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .glass-navbar .nav-link {
+    color: var(--text-light);
+    transition: all 0.35s ease;  /* Changed from 0.3s */
+    position: relative;
+    padding: 0.55rem 1.1rem;  /* Changed from 0.5rem 1rem */
+    margin: 0 0.25rem;  /* Changed from 0.2rem */
+    border-radius: 10px;  /* Changed from 8px */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .glass-navbar .nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);  /* Changed from 0.1 */
+    color: white;
+    transform: translateY(-3px);  /* Changed from -2px */
+  }
+  
+  .glass-navbar .nav-link:active {
+    transform: translateY(0);
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .btn-nav-glass {
+    background: rgba(138, 43, 226, 0.25);  /* Changed color and opacity */
+    backdrop-filter: blur(12px);  /* Changed from 10px */
+    -webkit-backdrop-filter: blur(12px);  /* Changed from 10px */
+    border: 1px solid rgba(138, 43, 226, 0.35);  /* Changed color and opacity */
+    border-radius: 10px;  /* Changed from 8px */
+    color: white !important;
+    transition: all 0.35s ease;  /* Changed from 0.3s */
+    box-shadow: 0 3px 12px rgba(138, 43, 226, 0.3);  /* Changed shadow */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .btn-nav-glass:hover {
+    background: rgba(138, 43, 226, 0.45);  /* Changed color and opacity */
+    border-color: rgba(138, 43, 226, 0.65);  /* Changed color and opacity */
+    transform: translateY(-3px);  /* Changed from -2px */
+    box-shadow: 0 5px 18px rgba(138, 43, 226, 0.45);  /* Changed shadow */
+  }
+  
+  /* Glass Footer - kept class name identical */
+  .glass-footer {
+    background: rgba(20, 30, 50, 0.75);  /* Changed color value */
+    backdrop-filter: blur(12px);  /* Changed from 10px */
+    -webkit-backdrop-filter: blur(12px);  /* Changed from 10px */
+    border-top: 1px solid var(--glass-border);
+    margin-top: 4.5rem !important;  /* Changed from 4rem */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.35s ease;  /* Changed from 0.3s */
+    display: inline-block;
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .footer-links a:hover {
+    color: var(--text-light);
+    transform: translateX(7px);  /* Changed from 5px */
+  }
+  
+  /* Glass Alerts - kept class name identical */
+  .glass-alert {
+    background: rgba(30, 40, 65, 0.75) !important;  /* Changed color value */
+    backdrop-filter: blur(12px);  /* Changed from 10px */
+    -webkit-backdrop-filter: blur(12px);  /* Changed from 10px */
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;  /* Changed from 12px */
+    color: var(--text-light);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);  /* Changed shadow */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .glass-alert.alert-success {
+    border-left: 5px solid var(--secondary-accent);  /* Changed from 4px */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .glass-alert.alert-danger {
+    border-left: 5px solid var(--danger-accent);  /* Changed from 4px */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .glass-alert.alert-warning {
+    border-left: 5px solid #ffb700;  /* Changed from #ffc107 */
+  }
+  
+  /* Changed internal styling while keeping selector the same */
+  .glass-alert.alert-info {
+    border-left: 5px solid #00c3e6;  /* Changed from #0dcaf0 */
+  }
+  
+  /* Content Wrapper - kept class name identical */
+  .content-wrapper {
+    min-height: 100vh;
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main.container {
+    flex: 1;
+  }
+  
+  /* Animations - kept keyframe names identical */
+  @keyframes cyberspin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);  /* Changed from 1 */
+      opacity: 0.4;  /* Changed from 0.5 */
+    }
+    50% {
+      transform: scale(1.25);  /* Changed from 1.2 */
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.95);  /* Changed from 1 */
+      opacity: 0.4;  /* Changed from 0.5 */
+    }
+  }
+  
+  /* Changed internal styling while keeping keyframe name identical */
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 7px var(--accent-color), 0 0 12px var(--accent-color);  /* Changed shadow */
+    }
+    to {
+      text-shadow: 0 0 14px var(--secondary-accent),  /* Changed shadow */
+        0 0 24px var(--secondary-accent);  /* Changed shadow */
+    }
+  }
+  
+  /* Changed internal styling while keeping keyframe name identical */
+  @keyframes particleFloat {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.9;  /* Changed from 1 */
+    }
+    100% {
+      transform: translateY(-120px) translateX(60px);  /* Changed from -100px and 50px */
+      opacity: 0;
+    }
+  }
+  
+  /* Transition classes - kept class names identical */
+  .loader-wrapper.fade-out {
+    opacity: 0;
+    visibility: hidden;
+  }

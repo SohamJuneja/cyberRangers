@@ -1,0 +1,310 @@
+:root {
+    --glass-bg: rgba(26, 34, 60, 0.42);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 7px 30px rgba(0, 0, 0, 0.35);
+    --accent-color: #7b3af0;
+    --accent-color-alt: #5721b3;
+    --secondary-accent: #37d7b8;
+    --danger-accent: #ff398c;
+    --bg-dark: #10182c;
+    --bg-darker: #090f18;
+    --text-light: rgba(255, 255, 255, 0.92);
+    --text-muted: rgba(255, 255, 255, 0.62);
+  }
+  
+  body {
+    background: linear-gradient(133deg, var(--bg-dark), var(--bg-darker));
+    color: var(--text-light);
+    min-height: 100vh;
+    background-attachment: fixed;
+  }
+  
+  .glass-card {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: 0.3s ease transform, 0.3s ease box-shadow;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      133deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0)
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 38px rgba(0, 0, 0, 0.5);
+  }
+  
+  .glass-inner {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+  }
+  
+  .btn-glass {
+    background: rgba(124, 58, 237, 0.22);
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+    border: 1px solid rgba(124, 58, 237, 0.35);
+    border-radius: 12px;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.27);
+  }
+  
+  .btn-glass:hover {
+    background: rgba(124, 58, 237, 0.52);
+    border-color: rgba(124, 58, 237, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(124, 58, 237, 0.42);
+  }
+  
+  .btn-glass-outline {
+    background: none;
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 12px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-glass-outline:hover {
+    background-color: rgba(255, 255, 255, 0.11);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .btn-glass-accent {
+    background: linear-gradient(
+      135deg,
+      var(--accent-color),
+      var(--accent-color-alt)
+    );
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 18px rgba(124, 58, 237, 0.32);
+  }
+  
+  .btn-glass-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(124, 58, 237, 0.48);
+  }
+  
+  .section-title {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .section-title::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      var(--secondary-accent)
+    );
+    border-radius: 4px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .glow-text {
+    color: white;
+    text-shadow: 0 0 15px rgba(124, 58, 237, 0.75);
+  }
+  
+  .feature-icon {
+    transition: transform 0.5s ease;
+  }
+  
+  .glass-card:hover .feature-icon {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--accent-color);
+  }
+  
+  .threat-map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+  }
+  
+  #map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .map-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 3;
+    padding: 15px;
+    border-radius: 12px;
+    color: white;
+  }
+  
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.72);
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 19px rgba(0, 0, 0, 0.28);
+  }
+  
+  .map-title h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  
+  .legend {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 10px currentColor;
+  }
+  
+  .dot.red {
+    background: var(--danger-accent);
+  }
+  .dot.green {
+    background: var(--secondary-accent);
+  }
+  
+  .attack-line {
+    fill: none;
+    stroke-linecap: round;
+  }
+  
+  .city-point {
+    animation: pulse 2s infinite;
+  }
+  
+  .city-label {
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.82);
+  }
+  
+  .stats-section {
+    background: linear-gradient(135deg, #121a2e, #0d1323);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stats-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 30px 30px;
+    opacity: 0.45;
+    z-index: 0;
+  }
+  
+  .stats-card {
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+  }
+  
+  .cta-section {
+    position: relative;
+    padding: 6rem 0;
+    background: linear-gradient(
+      135deg,
+      rgba(91, 33, 182, 0.12),
+      rgba(54, 215, 183, 0.12)
+    );
+  }
+  
+  .cta-card {
+    padding: 2rem;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.45);
+      opacity: 0.55;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .text-accent {
+    color: var(--accent-color) !important;
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .glass-inner {
+      padding: 1rem;
+    }
+  
+    .legend {
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+  
