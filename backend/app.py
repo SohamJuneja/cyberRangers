@@ -38,7 +38,8 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[logging.StreamHandler(), logging.FileHandler("app.log")]
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(_name_)
+
 
 # Ensure required directories exist
 os.makedirs("assets", exist_ok=True)
@@ -63,7 +64,6 @@ login_manager.login_view = "login"
 # In-memory user database
 users = {}
 
-class User(UserMixin):
     def __init__(self, id, username, password_hash):
         self.id = id
         self.username = username
@@ -157,4 +157,4 @@ def send_email(subject, message, recipient=None):
     msg["From"] = sender
     msg["To"] = to
     msg["Subject"] = subject
-    msg.attach
+    msg.attach

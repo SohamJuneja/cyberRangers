@@ -1,38 +1,39 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
-import NodefPage from "./pages/NodefPage";
-import DdosDefPage from "./pages/DdosDefPage";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import ShootingStar from "./components/ShootingStar";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
-const themeConfig = createTheme({
+import Navbar from './components/Navbar';
+import ShootingStar from './components/ShootingStar';
+import HomePage from './pages/HomePage';
+import NodefPage from './pages/NodefPage';
+import DdosDefPage from './pages/DdosDefPage';
+
+const theme = createTheme({
   palette: {
-    mode: "dark",
-    primary: { main: "#3a86ff" },
-    secondary: { main: "#ff007f" },
+    mode: 'dark',
+    primary: { main: '#3a86ff' },
+    secondary: { main: '#ff006e' },
     background: {
-      default: "#131313",
-      paper: "#1c1c1c",
+      default: '#121212',
+      paper: '#1e1e1e',
     },
     success: {
-      main: "#00f5d4",
-      dark: "#083a34",
-      contrastText: "#fff",
+      main: '#00f5d4',
+      dark: '#0a2e2a',
+      contrastText: '#ffffff',
     },
-    info: { main: "#7b2cbf" },
+    info: { main: '#8338ec' },
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          overflowX: "hidden",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-          "&::-webkit-scrollbar": {
-            display: "none",
+          overflowX: 'hidden',
+          scrollbarWidth: 'none', // Firefox
+          msOverflowStyle: 'none', // IE/Edge
+          '&::-webkit-scrollbar': {
+            display: 'none', // Chrome, Safari, Edge
           },
         },
       },
@@ -42,7 +43,7 @@ const themeConfig = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={themeConfig}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
         <ShootingStar />
