@@ -1,129 +1,108 @@
-NetSentinel.AI – Intelligent Network Threat Detection & Mitigation
+# CyberRangers – Intelligent Network Threat Detection & Mitigation
+
 A smart, AI-powered platform for identifying and responding to abnormal network traffic patterns in real time through advanced machine learning and interactive visualizations.
 
-🔍 Project Summary
-NetSentinel.AI merges cutting-edge ML algorithms with live network data inspection to proactively detect and mitigate suspicious activity. The architecture includes:
+## 🔍 Project Summary
 
-Backend: A Python-driven analytics engine using trained machine learning models
+CyberRangers merges cutting-edge ML algorithms with live network data inspection to proactively detect and mitigate suspicious activity. The architecture includes:
 
-Frontend: A responsive dashboard for visualization and simulated traffic interaction
+- **Backend**: A Python-driven analytics engine using trained machine learning models
+- **Frontend**: A responsive dashboard for visualization and simulated traffic interaction
 
-🚀 Getting Started
-🔧 Prerequisites
-Backend
-Python 3.8 or higher
+## 🚀 Getting Started
 
-Required Python packages (requirements.bat or requirements.txt)
+### 🔧 Prerequisites
 
-Minimum 8GB RAM recommended for training tasks
+**Backend**
+- Python 3.8 or higher
+- Required Python packages (requirements.bat or requirements.txt)
+- Minimum 8GB RAM recommended for training tasks
 
-Frontend
-Node.js v14+
+**Frontend**
+- Node.js v14+
+- npm or yarn package manager
 
-npm or yarn package manager
+### 🛠️ Installation
 
-🛠️ Installation
-Backend Setup
-Navigate to the backend folder:
-
-bash
-Copy
-Edit
+**Backend Setup**
+1. Navigate to the backend folder:
+```bash
 cd backend
-Install the necessary Python packages:
+```
 
-bash
-Copy
-Edit
+2. Install the necessary Python packages:
+```bash
 ./requirements.bat
 # or
 pip install -r requirements.txt
-(Optional) Prepare the dataset:
+```
 
-bash
-Copy
-Edit
+3. (Optional) Prepare the dataset:
+```bash
 python data_preprocessing.py
-Frontend Setup
-Navigate to the frontend simulation directory:
+```
 
-bash
-Copy
-Edit
+**Frontend Setup**
+1. Navigate to the frontend simulation directory:
+```bash
 cd frontendsim
-Install dependencies:
+```
 
-bash
-Copy
-Edit
+2. Install dependencies:
+```bash
 npm install
-💡 Usage
-Backend Execution
-Run the core backend application:
+```
 
-bash
-Copy
-Edit
+## 💡 Usage
+
+**Backend Execution**
+1. Run the core backend application:
+```bash
 cd backend
 python app.py
-In a new terminal, start the data visualization panel:
+```
 
-bash
-Copy
-Edit
+2. In a new terminal, start the data visualization panel:
+```bash
 python dashboard_v3.py
+```
 The interface will be accessible at http://localhost:5000
 
-Frontend Execution
-To launch the frontend server:
-
-bash
-Copy
-Edit
+**Frontend Execution**
+1. To launch the frontend server:
+```bash
 cd frontendsim
 npm run dev
+```
 The dashboard will be available at http://localhost:3000
 
 For production deployment:
-
-bash
-Copy
-Edit
+```bash
 npm run build
-🧠 System Features
-Live monitoring of network traffic
+```
 
-Anomaly detection using autoencoder networks
+## 🧠 System Features
 
-Graph-based analysis with GNNs
+- Live monitoring of network traffic
+- Anomaly detection using autoencoder networks
+- Graph-based analysis with GNNs
+- Reinforcement learning for threat scoring
+- Transparent AI-based decision-making
+- Network simulation capabilities
+- Interactive and analytical frontend dashboard
 
-Reinforcement learning for threat scoring
+## 📁 Project Layout
 
-Transparent AI-based decision-making
+**Backend**
+- app.py – Primary backend entry point
+- autoencoder_model.py – Handles anomaly detection
+- gnn_model.py – Performs graph neural network analysis
+- rl_threat_scorer.py – Scores threats using reinforcement learning
+- xai_explainer.py – Provides explainability for AI decisions
+- dashboard_v3.py – Launches visual monitoring interface
 
-Network simulation features
-
-Interactive and analytical frontend dashboard
-
-📁 Project Layout
-Backend
-app.py – Primary backend entry point
-
-autoencoder_model.py – Handles anomaly detection
-
-gnn_model.py – Performs graph neural network analysis
-
-rl_threat_scorer.py – Scores threats using reinforcement learning
-
-xai_explainer.py – Provides explainability for AI decisions
-
-dashboard_v3.py – Launches visual monitoring interface
-
-Frontend
-Built with ReactJS
-
-Visual components powered by D3.js
-
-Simulated traffic environment
-
-Real-time monitoring panels
+**Frontend**
+- Built with ReactJS
+- Visual components powered by D3.js
+- Simulated traffic environment
+- Real-time monitoring panels
