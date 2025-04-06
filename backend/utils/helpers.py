@@ -42,3 +42,16 @@ def threat_color(probability):
         return "#FF0000"  # Red - High Alert
     else:
         return "#7030A0"  # Purple - Extreme Risk
+
+
+def json_serialize_fix(obj):
+    if isinstance(obj, (np.integer,)):
+        return int(obj)
+    elif isinstance(obj, (np.floating,)):
+        return float(obj)
+    elif isinstance(obj, (np.ndarray,)):
+        return obj.tolist()
+    elif isinstance(obj, set):
+        return list(obj)
+    else:
+        raise TypeError(f"Type {type(obj)} not serializable")

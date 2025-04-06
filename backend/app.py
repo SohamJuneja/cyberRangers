@@ -22,7 +22,7 @@ from dashboard.layout import create_dashboard_layout
 from dashboard.callbacks import register_callbacks
 from simulation.data_generator import simulate_ddos
 from data_provider_v3 import (
-    get_latest_attack_data,
+    get_latest_traffic_data,
     get_attack_statistics,
     get_historical_attack_data,
     get_network_data,
@@ -38,7 +38,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[logging.StreamHandler(), logging.FileHandler("app.log")]
 )
-logger = logging.getLogger(_name_)
+logger = logging.getLogger(__name__)  # Fixed the logger name from _name_
 
 
 # Ensure required directories exist
@@ -64,6 +64,7 @@ login_manager.login_view = "login"
 # In-memory user database
 users = {}
 
+class User(UserMixin):
     def __init__(self, id, username, password_hash):
         self.id = id
         self.username = username
@@ -157,4 +158,15 @@ def send_email(subject, message, recipient=None):
     msg["From"] = sender
     msg["To"] = to
     msg["Subject"] = subject
-    msg.attach
+    msg.attach(MIMEText(message, "plain"))
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(sender, EMAIL_PASSWORD)
+            server.sendmail(sender, to, msg.as_string())
+        logger.info(f"Email sent to {to}")
+    except Exception as e:
+        logger.error(f"Failed to send email: {e}")
+
+# Add the main block to run the app
+if __name__ == "__main__":
+    socketio.run(server, debug=True)

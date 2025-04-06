@@ -1,0 +1,30 @@
+2025-04-06 09:49:09,229 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-06 09:49:09,231 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-06 09:49:09,232 - INFO -  * Restarting with stat
+2025-04-06 09:49:10,876 - WARNING -  * Debugger is active!
+2025-04-06 09:49:10,883 - INFO -  * Debugger PIN: 136-124-229
+2025-04-06 09:54:58,181 - INFO - 127.0.0.1 - - [06/Apr/2025 09:54:58] "GET /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52irbqbm HTTP/1.1" 200 -
+2025-04-06 09:54:58,191 - INFO - 127.0.0.1 - - [06/Apr/2025 09:54:58] "GET /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52irawrk HTTP/1.1" 200 -
+2025-04-06 09:54:58,244 - INFO - 127.0.0.1 - - [06/Apr/2025 09:54:58] "GET /socket.io/?pageType=ddosdef&EIO=4&transport=polling&t=52iusgq3 HTTP/1.1" 200 -
+2025-04-06 09:54:58,246 - INFO - 127.0.0.1 - - [06/Apr/2025 09:54:58] "GET /socket.io/?pageType=ddosdef&EIO=4&transport=polling&t=52iusr75 HTTP/1.1" 200 -
+2025-04-06 09:54:58,361 - INFO - 127.0.0.1 - - [06/Apr/2025 09:54:58] "POST /socket.io/?pageType=ddosdef&EIO=4&transport=polling&t=52j6mf46&sid=_j3MDlSn_kLlNLnSAAAC HTTP/1.1" 200 -
+2025-04-06 09:54:58,611 - INFO - 127.0.0.1 - - [06/Apr/2025 09:54:58] "GET /socket.io/?pageType=ddosdef&EIO=4&transport=polling&t=52j6nqit&sid=_j3MDlSn_kLlNLnSAAAC HTTP/1.1" 200 -
+2025-04-06 09:54:58,651 - INFO - 127.0.0.1 - - [06/Apr/2025 09:54:58] "[33mGET /api/start-packets HTTP/1.1[0m" 404 -
+2025-04-06 09:54:59,896 - INFO - 127.0.0.1 - - [06/Apr/2025 09:54:59] "GET /socket.io/?pageType=ddosdef&EIO=4&transport=websocket&sid=_j3MDlSn_kLlNLnSAAAC HTTP/1.1" 200 -
+2025-04-06 09:55:00,229 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:00] "GET /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52kfpc6u HTTP/1.1" 200 -
+2025-04-06 09:55:00,242 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:00] "GET /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52kfql0y HTTP/1.1" 200 -
+2025-04-06 09:55:00,505 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:00] "POST /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52kpsihd&sid=MOhKPn9HKelbhSYbAAAG HTTP/1.1" 200 -
+2025-04-06 09:55:00,594 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:00] "GET /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52kpsvo1&sid=MOhKPn9HKelbhSYbAAAG HTTP/1.1" 200 -
+2025-04-06 09:55:02,293 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:02] "GET /socket.io/?pageType=nodef&EIO=4&transport=websocket&sid=MOhKPn9HKelbhSYbAAAG HTTP/1.1" 200 -
+2025-04-06 09:55:03,742 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:03] "GET /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52ndra5v HTTP/1.1" 200 -
+2025-04-06 09:55:04,162 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:04] "GET /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52ndsg34 HTTP/1.1" 200 -
+2025-04-06 09:55:04,534 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:04] "POST /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52nqnk9c&sid=pbW8Kx2Vue3KukuLAAAJ HTTP/1.1" 200 -
+2025-04-06 09:55:04,544 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:04] "GET /socket.io/?pageType=nodef&EIO=4&transport=polling&t=52nqnyc3&sid=pbW8Kx2Vue3KukuLAAAJ HTTP/1.1" 200 -
+2025-04-06 09:55:04,606 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:04] "GET /socket.io/?pageType=nodef&EIO=4&transport=websocket&sid=pbW8Kx2Vue3KukuLAAAJ HTTP/1.1" 200 -
+2025-04-06 09:55:04,759 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:04] "GET /socket.io/?pageType=ddosdef&EIO=4&transport=polling&t=52o1onyq HTTP/1.1" 200 -
+2025-04-06 09:55:04,910 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:04] "GET /socket.io/?pageType=ddosdef&EIO=4&transport=polling&t=52o1pvpf HTTP/1.1" 200 -
+2025-04-06 09:55:04,928 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:04] "POST /socket.io/?pageType=ddosdef&EIO=4&transport=polling&t=52obayb2&sid=_dZheunn46QHsQxgAAAM HTTP/1.1" 200 -
+2025-04-06 09:55:05,262 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:05] "GET /socket.io/?pageType=ddosdef&EIO=4&transport=polling&t=52obcvfs&sid=_dZheunn46QHsQxgAAAM HTTP/1.1" 200 -
+2025-04-06 09:55:05,672 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:05] "[33mGET /api/start-packets HTTP/1.1[0m" 404 -
+2025-04-06 09:55:08,942 - INFO - 127.0.0.1 - - [06/Apr/2025 09:55:08] "GET /socket.io/?pageType=ddosdef&EIO=4&transport=websocket&sid=_dZheunn46QHsQxgAAAM HTTP/1.1" 200 -

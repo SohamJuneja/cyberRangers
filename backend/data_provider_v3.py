@@ -135,7 +135,8 @@ def get_latest_traffic_data() -> Dict[str, Any]:
             'target_service': 'Web Server'
         }
 
-def analyze_attack_patterns() -> Dict[str, Any]:
+# Renamed function to match the import in app.py
+def get_attack_statistics() -> Dict[str, Any]:
     try:
         df = simulate_traffic_data(24)
         attacks_only = df[df['attack_type'] != 'Normal']
@@ -187,5 +188,129 @@ def analyze_attack_patterns() -> Dict[str, Any]:
         }
 
     except Exception as e:
-        logger.error(f"Exception in analyze_attack_patterns: {e}")
+        logger.error(f"Exception in get_attack_statistics: {e}")
         return {}
+
+# Added missing functions that were imported in app.py
+def get_historical_attack_data(days: int = 7) -> Dict[str, Any]:
+    """
+    Get historical attack data for the specified number of days
+    """
+    try:
+        df = simulate_traffic_data(days * 24)
+        
+        # Group by day and calculate daily statistics
+        df['date'] = df['timestamp'].dt.date
+        daily_stats = []
+        
+        for date, group in df.groupby(df['date']):
+            attacks = group[group['attack_probability'] > 0.5]
+            daily_stats.append({
+                'date': date.strftime('%Y-%m-%d'),
+                'attack_count': len(attacks),
+                'avg_probability': attacks['attack_probability'].mean() if len(attacks) > 0 else 0,
+                'max_probability': attacks['attack_probability'].max() if len(attacks) > 0 else 0,
+                'total_traffic': group['traffic'].sum(),
+                'blocked_requests': group['blocked_requests'].sum()
+            })
+        
+        # Get attack type distribution
+        attack_types = df[df['attack_type'] != 'Normal']['attack_type'].value_counts().to_dict()
+        
+        return {
+            'daily_stats': daily_stats,
+            'attack_distribution': attack_types,
+            'total_blocked': df['blocked_requests'].sum(),
+            'highest_traffic_day': max(daily_stats, key=lambda x: x['total_traffic'])['date'] if daily_stats else None
+        }
+        
+    except Exception as e:
+        logger.error(f"Error in get_historical_attack_data: {e}")
+        return {
+            'daily_stats': [],
+            'attack_distribution': {},
+            'total_blocked': 0,
+            'highest_traffic_day': None
+        }
+
+def get_network_data() -> Dict[str, Any]:
+    """
+    Get data about network services and their status
+    """
+    try:
+        services = ['Web Server', 'DNS', 'API Gateway', 'Database', 'Auth Service', 'Load Balancer', 'CDN']
+        result = []
+        
+        for service in services:
+            status = random.choices(['Healthy', 'Degraded', 'Under Attack'], [0.7, 0.2, 0.1])[0]
+            load = random.uniform(10, 95) if status == 'Healthy' else random.uniform(70, 100)
+            
+            result.append({
+                'service': service,
+                'status': status,
+                'load_percentage': round(load, 1),
+                'response_time': round(random.uniform(10, 200) * (1.5 if status != 'Healthy' else 1), 2),
+                'connections': random.randint(10, 500)
+            })
+        
+        return {
+            'services': result,
+            'total_services': len(services),
+            'healthy_count': sum(1 for s in result if s['status'] == 'Healthy'),
+            'degraded_count': sum(1 for s in result if s['status'] == 'Degraded'),
+            'attacked_count': sum(1 for s in result if s['status'] == 'Under Attack')
+        }
+        
+    except Exception as e:
+        logger.error(f"Error in get_network_data: {e}")
+        return {
+            'services': [],
+            'total_services': 0,
+            'healthy_count': 0,
+            'degraded_count': 0,
+            'attacked_count': 0
+        }
+
+def integrate_model_predictions() -> Dict[str, Any]:
+    """
+    Simulate AI model predictions for future attacks
+    """
+    try:
+        current_time = datetime.now()
+        predictions = []
+        
+        # Generate predictions for the next 24 hours in 4-hour increments
+        for i in range(1, 7):
+            future_time = current_time + timedelta(hours=i * 4)
+            threat_probability = random.random()
+            
+            predictions.append({
+                'timestamp': future_time.strftime('%Y-%m-%d %H:%M:%S'),
+                'predicted_probability': threat_probability,
+                'threat_level': determine_threat_level(threat_probability),
+                'confidence': random.uniform(0.6, 0.95),
+                'potential_type': random.choice(list(ATTACK_PATTERNS.keys())) if threat_probability > 0.4 else None
+            })
+        
+        highest_threat = max(predictions, key=lambda x: x['predicted_probability'])
+        
+        return {
+            'predictions': predictions,
+            'highest_threat_time': highest_threat['timestamp'],
+            'highest_threat_level': highest_threat['threat_level'],
+            'overall_risk': sum(p['predicted_probability'] for p in predictions) / len(predictions),
+            'recommendation': 'Increase Security Measures' if highest_threat['predicted_probability'] > 0.6 else 'Normal Monitoring'
+        }
+        
+    except Exception as e:
+        logger.error(f"Error in integrate_model_predictions: {e}")
+        return {
+            'predictions': [],
+            'highest_threat_time': None,
+            'highest_threat_level': None,
+            'overall_risk': 0.0,
+            'recommendation': 'Normal Monitoring'
+        }
+
+# Keep the original function for backward compatibility
+analyze_attack_patterns = get_attack_statistics
