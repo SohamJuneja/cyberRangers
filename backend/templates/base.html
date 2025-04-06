@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}SentinelShield{% endblock %}</title>
+
+    <!-- Core Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='base-styles.css') }}" />
+    {% block extra_css %}{% endblock %}
+
+    <style>
+      .loader-container {
+        position: fixed;
+        inset: 0;
+        background-color: #0f0f0f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5000;
+        transition: all 0.4s ease-in-out;
+      }
+
+      .loader-circle {
+        position: relative;
+        width: 200px;
+        height: 200px;
+      }
+
+      .loader-circle::before,
+      .loader-circle::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: 4px solid transparent;
+      }
+
+      .loader-circle::before {
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-top-color: #00c2ff;
+        border-right-color: #00c2ff;
+        animation: spin1 2s linear infinite;
+      }
+
+      .loader-circle::after {
+        top: 15px; left: 15px; right: 15px; bottom: 15px;
+        border-top-color: #00ffb3;
+        border-left-color: #00ffb3;
+        animation: spin2 1.2s linear infinite reverse;
+      }
+
+      .loader-msg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        text-align: center;
+        z-index: 10;
+        font-size: 1.1rem;
+        animation: glowFade 1.5s alternate infinite ease-in-out;
+      }
+
+      @keyframes spin1 { to { transform: rotate(360deg); } }
+      @keyframes spin2 { to { transform: rotate(-360deg); } }
+      @keyframes glowFade {
+        0% { text-shadow: 0 0 6px #00c2ff; }
+        100% { text-shadow: 0 0 10px #00ffb3; }
+      }
+
+      .loader-container.fade-out {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      body.loading {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="loading">
+    <!-- Loader -->
+    <div class="loader-container">
+      <div class="loader-circle"></div>
+      <div class="loader-msg">Booting System...</div>
+    </div>
+
+    <!-- Background canvas -->
+    <canvas id="network-bg"></canvas>
+
+    <div class="content-wrapper">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('index') }}">
+            <i class="fas fa-shield-virus text-info"></i> SentinelShield
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">Overview</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('documentation') }}">Docs</a></li>
+              {% if current_user.is_authenticated %}
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Console</a></li>
+              {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+              {% if current_user.is_authenticated %}
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+              {% else %}
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Sign In</a></li>
+              <li class="nav-item"><a class="btn btn-outline-info ms-2" href="{{ url_for('register') }}">Register</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Alerts -->
+      <div class="container mt-5 pt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
+      </div>
+
+      <!-- Content -->
+      <main class="container mt-4">{% block content %}{% endblock %}</main>
+
+      <!-- Footer -->
+      <footer class="footer text-light mt-5 py-3 bg-dark">
+        <div class="container d-flex justify-content-between">
+          <div>
+            <strong>SentinelShield</strong><br />
+            Cyber-AI powered defense framework.
+          </div>
+          <div>
+            <a href="{{ url_for('documentation') }}">Docs</a> |
+            <a href="{{ url_for('about') }}">About</a>
+          </div>
+          <div>
+            <i class="fas fa-envelope text-info"></i> support@sentinelshield.com
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const loader = document.querySelector(".loader-container");
+        const msg = document.querySelector(".loader-msg");
+        const texts = ["Booting System...", "Scanning Traffic", "Deploying AI Agents", "Securing Nodes"];
+        let idx = 0;
+
+        setInterval(() => {
+          msg.style.opacity = 0;
+          setTimeout(() => {
+            msg.textContent = texts[idx];
+            msg.style.opacity = 1;
+            idx = (idx + 1) % texts.length;
+          }, 400);
+        }, 1800);
+
+        window.addEventListener("load", () => {
+          setTimeout(() => {
+            loader.classList.add("fade-out");
+            document.body.classList.remove("loading");
+          }, 700);
+        });
+      });
+    </script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

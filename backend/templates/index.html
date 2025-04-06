@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block title %}dDOS.Ai - Smart AI DDoS Defense{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-section text-center py-5 fade-in">
+  <div class="container">
+    <h1 class="display-4 mb-4 glow-text">
+      <i class="fas fa-shield-alt text-accent"></i> dDOS.Ai
+    </h1>
+    <p class="lead mb-5 text-accent glow-text">
+      Where Explainable AI Analyzes, Graph Networks Guard, and Threats Fall.
+    </p>
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="threat-map-container mb-5 fade-in glass-card">
+          <div class="glass-inner">
+            <div class="card-body p-0 position-relative" style="height: 600px">
+              <div id="map-container">
+                <svg id="world-map"></svg>
+                <div class="map-overlay glass-panel">
+                  <div class="map-title">
+                    <h3>Real-Time Global Attack Monitoring</h3>
+                    <div class="legend">
+                      <div class="legend-item">
+                        <span class="dot red"></span> DDoS Detected
+                      </div>
+                      <div class="legend-item">
+                        <span class="dot green"></span> Botnet Signals
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-grid gap-2 d-md-block">
+      <a href="{{ url_for('login') }}" class="btn btn-glass btn-lg mx-2">
+        <i class="fas fa-shield-alt"></i> Start Now
+      </a>
+      <a
+        href="{{ url_for('documentation') }}"
+        class="btn btn-glass-outline btn-lg mx-2"
+      >
+        <i class="fas fa-book"></i> Explore Docs
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section py-5">
+  <div class="container">
+    <h2 class="text-center mb-5 section-title">What Makes dDOS.Ai Unique?</h2>
+    <div class="row g-4">
+      <!-- Feature 1 -->
+      <div class="col-md-4">
+        <div class="glass-card h-100 fade-in">
+          <div class="glass-inner">
+            <div class="card-body text-center">
+              <i class="fas fa-brain fa-3x text-accent mb-3 feature-icon"></i>
+              <h3>AI-Driven Security</h3>
+              <p>
+                Cutting-edge models that recognize and stop DDoS threats on the fly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Feature 2 -->
+      <div class="col-md-4">
+        <div class="glass-card h-100 fade-in">
+          <div class="glass-inner">
+            <div class="card-body text-center">
+              <i class="fas fa-tachometer-alt fa-3x text-accent mb-3 feature-icon"></i>
+              <h3>Live Analytics</h3>
+              <p>
+                Keep an eye on traffic anomalies and threat behaviors with a user-friendly interface.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Feature 3 -->
+      <div class="col-md-4">
+        <div class="glass-card h-100 fade-in">
+          <div class="glass-inner">
+            <div class="card-body text-center">
+              <i class="fas fa-shield-virus fa-3x text-accent mb-3 feature-icon"></i>
+              <h3>Self-Learning Defense</h3>
+              <p>
+                The system evolves continuously to counteract emerging attack strategies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack Section -->
+<section class="stats-section py-5">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-md-3">
+        <div class="stats-card glass-card fade-in">
+          <div class="glass-inner">
+            <i class="fab fa-python fa-3x text-accent mb-3"></i>
+            <h2>Python</h2>
+            <p>Foundation Language</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stats-card glass-card fade-in">
+          <div class="glass-inner">
+            <i class="fab fa-react fa-3x text-accent mb-3"></i>
+            <h2>Flask</h2>
+            <p>Backend Framework</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stats-card glass-card fade-in">
+          <div class="glass-inner">
+            <i class="fas fa-project-diagram fa-3x text-accent mb-3"></i>
+            <h2>PyTorch</h2>
+            <p>AI Modeling</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stats-card glass-card fade-in">
+          <div class="glass-inner">
+            <i class="fas fa-database fa-3x text-accent mb-3"></i>
+            <h2>SQLite</h2>
+            <p>Lightweight Storage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+        <div class="glass-card cta-card">
+          <div class="glass-inner">
+            <h2 class="mb-4">Take Control of Your Cybersecurity</h2>
+            <a
+              href="{{ url_for('login') }}"
+              class="btn btn-glass-accent btn-lg"
+            >
+              <i class="fas fa-rocket"></i> Launch Protection
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scripts and Dependencies -->
+<script src="https://d3js.org/d3.v7.min.js" defer></script>
+<script src="https://d3js.org/topojson.v3.min.js" defer></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+<script src="{{ url_for('static', filename='map.js') }}"></script>
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='effects.js') }}"></script>
+{% endblock %}
