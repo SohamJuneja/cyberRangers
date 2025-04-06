@@ -41,7 +41,7 @@ const theme = createTheme({
   },
 });
 
-const App = () => {
+function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -56,6 +56,6 @@ const App = () => {
       </Router>
     </ThemeProvider>
   );
-};
+}
 
-export default App;
+export default App;

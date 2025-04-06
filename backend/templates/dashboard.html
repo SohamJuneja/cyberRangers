@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - dDOS.Ai{% endblock %}
+{% block content %}
+
+<!-- Dashboard Header -->
+<div class="dashboard-header fade-in">
+  <div class="glass-card mb-4">
+    <div class="glass-inner">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1 class="mb-0 glow-text">
+            <i class="fas fa-chart-line text-accent"></i> Security Dashboard
+          </h1>
+          <p class="text-muted mt-2 mb-0">
+            Monitor your network security in real-time
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+          <div class="dashboard-controls">
+            <div class="status-indicator online">
+              <span class="status-dot"></span>
+              <span class="status-text">Protection Active</span>
+            </div>
+            <button class="btn btn-glass mx-2" onclick="toggleFullscreen()">
+              <i class="fas fa-expand"></i> Fullscreen
+            </button>
+            <button class="btn btn-glass-outline" id="refreshBtn">
+              <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dashboard Stats Section -->
+<div class="row g-4 mb-4">
+  <div class="col-md-3">
+    <div class="glass-card stat-card fade-in">
+      <div class="glass-inner">
+        <div class="stat-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="stat-info">
+          <h3 class="counter" data-target="99.8">99.8%</h3>
+          <p>Protection Rate</p>
+        </div>
+        <div class="stat-chart">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 99.8%" aria-valuenow="99.8" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="glass-card stat-card fade-in" style="animation-delay: 0.2s">
+      <div class="glass-inner">
+        <div class="stat-icon">
+          <i class="fas fa-tachometer-alt"></i>
+        </div>
+        <div class="stat-info">
+          <h3 class="counter" data-target="45">45ms</h3>
+          <p>Avg. Response Time</p>
+        </div>
+        <div class="stat-chart">
+          <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="glass-card stat-card fade-in" style="animation-delay: 0.4s">
+      <div class="glass-inner">
+        <div class="stat-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="stat-info">
+          <h3 class="counter" data-target="143">143</h3>
+          <p>AI Models Active</p>
+        </div>
+        <div class="stat-chart">
+          <div class="progress">
+            <div class="progress-bar progress-bar-accent" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="glass-card stat-card fade-in" style="animation-delay: 0.6s">
+      <div class="glass-inner">
+        <div class="stat-icon">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="stat-info">
+          <h3 class="counter" data-target="12547">12,547</h3>
+          <p>Threats Blocked Today</p>
+        </div>
+        <div class="stat-chart">
+          <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Email Alert Notification Section -->
+<div class="glass-card mb-4">
+  <div class="glass-inner">
+    <h4 class="card-title">
+      <i class="fas fa-bell text-accent"></i> Alert Notifications
+    </h4>
+    <p class="card-text">
+      Notify your security team when a threat is detected.
+    </p>
+
+    <div class="row mb-3">
+      <div class="col-md-8">
+        <div class="cyber-input-group">
+          <div class="input-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <input
+            type="email"
+            class="form-control cyber-input"
+            id="alert-recipient"
+            placeholder="Enter recipient email"
+            autocomplete="email"
+          />
+        </div>
+      </div>
+      <div class="col-md-4 d-grid">
+        <button id="send-alert-btn" class="btn cosmic-btn">
+          <span class="btn-text">
+            <i class="fas fa-paper-plane"></i> Send Alert
+          </span>
+          <span class="btn-glitch"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="alert-result">
+      <!-- Alert status will appear here -->
+    </div>
+  </div>
+</div>
+
+<!-- Embedded Dash Application -->
+<div class="glass-card dash-container fade-in">
+  <div class="glass-inner p-0">
+    <div class="dash-header">
+      <h5 class="mb-0"><i class="fas fa-analytics"></i> Advanced Analytics</h5>
+      <div class="dash-controls">
+        <button class="btn-icon" id="minimizeBtn">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button class="btn-icon" id="expandBtn" onclick="toggleFullscreen()">
+          <i class="fas fa-expand"></i>
+        </button>
+      </div>
+    </div>
+    <div class="dash-app-container">
+      <iframe src="/dash/" id="dashboardFrame"></iframe>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<!-- No change made to CSS, assumed already optimized -->
+{% endblock %}
+
+{% block extra_js %}
+<!-- No change made to JavaScript, as per instruction -->
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='js/notification.js') }}"></script>
+{% endblock %}

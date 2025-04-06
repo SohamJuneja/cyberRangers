@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}Register - dDOS.Ai{% endblock %}
+{% block content %}
+<div class="full-width-container">
+  <div class="auth-wrapper">
+    <div class="auth-container">
+      <div class="glass-card register-card">
+        <div class="card-header text-center">
+          <div class="shield-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h2 class="glow-text">Sign Up</h2>
+          <p class="text-muted">Become part of the dDOS.Ai defense grid</p>
+        </div>
+
+        <div class="card-body">
+          <form method="POST" id="registerForm">
+            <div class="form-group mb-4">
+              <div class="cyber-input-group">
+                <div class="input-icon">
+                  <i class="fas fa-user"></i>
+                </div>
+                <input
+                  type="text"
+                  class="form-control cyber-input"
+                  name="username"
+                  placeholder="Choose a username"
+                  required
+                  autocomplete="username"
+                />
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <div class="cyber-input-group">
+                <div class="input-icon">
+                  <i class="fas fa-lock"></i>
+                </div>
+                <input
+                  type="password"
+                  class="form-control cyber-input"
+                  name="password"
+                  id="password"
+                  placeholder="Create a password"
+                  required
+                  autocomplete="new-password"
+                />
+                <button
+                  type="button"
+                  class="toggle-password"
+                  data-target="password"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <div class="cyber-input-group">
+                <div class="input-icon">
+                  <i class="fas fa-lock"></i>
+                </div>
+                <input
+                  type="password"
+                  class="form-control cyber-input"
+                  name="confirm_password"
+                  id="confirm_password"
+                  placeholder="Repeat your password"
+                  required
+                  autocomplete="new-password"
+                />
+                <button
+                  type="button"
+                  class="toggle-password"
+                  data-target="confirm_password"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-cyber-primary">
+                <span class="btn-text">
+                  <i class="fas fa-user-plus"></i> Register Now
+                </span>
+                <span class="btn-glitch"></span>
+              </button>
+            </div>
+          </form>
+
+          <div class="mt-4 text-center">
+            <a href="{{ url_for('login') }}" class="text-accent">
+              Already signed up? Click here to log in
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cyber-footer text-center mt-3">
+        <p class="small text-muted">
+          Powered by <span class="text-accent">dDOS.Ai</span> Defense Suite
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/auth.css') }}"
+/>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

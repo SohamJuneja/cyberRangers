@@ -40,12 +40,13 @@ logging.basicConfig(
 )
 logger = logging.getLogger(_name_)
 
+
 # Ensure required directories exist
 os.makedirs("assets", exist_ok=True)
 
 # Flask app initialization
 server = Flask(
-    _name_,
+    __name__,
     static_folder="static",
     template_folder="templates",
     static_url_path="/static"
@@ -63,8 +64,7 @@ login_manager.login_view = "login"
 # In-memory user database
 users = {}
 
-class User(UserMixin):
-    def _init_(self, id, username, password_hash):
+    def __init__(self, id, username, password_hash):
         self.id = id
         self.username = username
         self.password_hash = password_hash
